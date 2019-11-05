@@ -1,0 +1,5 @@
+// GCC include research path
+--i"\usr\include"
+--i"\usr\include\linux"
+--i"\usr\lib\gcc\x86_64-linux-gnu\7\include"
+//--i"\usr\include\bits"

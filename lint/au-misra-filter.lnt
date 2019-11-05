@@ -1,0 +1,32 @@
+/* This file contains the Misra rules to filter to be compliant with the customer need
+ * To filter a misra rule, search in the PC-lint configuration file au-misraX.lnt the misra rule to filter
+ * ie: MISRA 9-6-2
+ * -------------------------------------------------------------------------------------------------------
+ * **** Rule 6.1  (req) ************
+ *
+ * +e46                // field type should be int
+ * +elib(46)
+ * -append(46,[MISRA 2012 Rule 6.1, required])
+ * +e806               // small bit field is signed rather than unsigned
+ * +elib(806)
+ * -append(806,[MISRA 2012 Rule 6.1, required])
+ * -------------------------------------------------------------------------------------------------------
+ * This rule is composes of 2 messages: message 46 and message 806
+ * To remove these messages, we have to use the following syntax:
+ * -e46   : remove message 46 on the source files
+ * -elib(46) : remove message 46 on the library files
+ * -e806   : remove message 806 on the source files
+ * -elib(806) : remove message 806 on the library files
+ */
+
+/* Disable Rule 15.4 (Adv)
+ * more than one 'break' terminates loop 
+ */
+-e9011
+-elib(9011)
+
+/* Disable Rule 15.5 (Adv)
+ * return before function end 
+ */
+-e904
+-elib(904)

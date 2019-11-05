@@ -1,0 +1,22 @@
+//  Texas Inst. TI320 class C compilers, ,
+//  Standard lint options
+
+
+// do not issue pragma messages
+-pragma(message)
+
+// Break when an error is detected
+-zero(99)
+
+/****** Removed messages *********************************************************/
+-e830 // Location cited in prior message
+-e835 // A zero has been given as [left/right] argument to operator 'Name'
+-e537 // Repeated include file
+
+/**** Warning Level *************************************************************/
+//-w0 No messages (except for fatal errors)
+//-w1 Error messages only -- no Warnings or Informationals.
+//-w2 Error and Warning messages only
+//-w3 Error, Warning and Informational messages (this is the default)
+//-w4 All messages.
+-w3

@@ -1,0 +1,41 @@
+/* To start the pclint use the following command
+ * $ wine <PCLINT_FOLDER>/lint-nt.exe "-setenv(SDK_PATH=<sdk_path>)" lint\\lint-project.lnt
+ *
+ * Depending on your sdk installation you may need to change the newt Configuration
+ * - lint/gcc-arm-include-path.lnt: SDK include path use "winepath -w" to get the
+ *   wine absolute path
+ *
+ * Be carefull of the files include orders
+ *
+ * The co-gcc-arm.lnt is getting from co-rkit-ARM.zip, it include:
+ *  - gcc-arm-include-path.lnt: Compiler include path. Allow PCLint to found
+ *    libraries. the next command give the path after sourcing the sdk environment
+ *        $ ${CC} -E -x c++ - -v < /dev/null
+ *  - lint_cmac.h: C Compiler predefined macros. the next command generate the
+ *    file after sourcing the sdk environment
+ *        $ touch tmp.c; ${CC} -dM -E tmp.c > lint/lint_cmac.h; rm tmp.c
+ *  - lint_cppmac.h: Cpp Compiler predefined macros. the next command generate the
+ *    file after sourcing the sdk environment
+ *        $ touch tmp.cpp; ${CXX} -dM -E tmp.cpp > lint/lint_cppmac.h; rm tmp.cpp
+ */
+
+// Search included files in the lint directory
+-i"lint"
+
+/***** MISRA CPP pclint rules *****/
+// base configuration
+au-misra3.lnt
+// misra filtering option
+au-misra-filter.lnt
+
+/***** Compiler configutation *****/
+co-gcc-arm.lnt
+
+/***** Set output as an XML file *****/
+env-xml.lnt
+
+/***** Project options *****/
+lint-project-options.lnt
+
+/***** Compiler configutation *****/
+lint-project-sources.lnt
